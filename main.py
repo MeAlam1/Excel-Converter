@@ -22,14 +22,14 @@ def download_data():
         # Read the txt file into a DataFrame
         df = pd.read_csv(url, skiprows=13, sep=',', low_memory=False)
 
-        # get the current date and time
+        # get the current date
         now = datetime.now()
 
-        # Format the current date and time as a string
-        current_day_str = now.strftime('%Y-%m')
+        # Format the current date
+        current_month_str = now.strftime('%Y-%m')
 
         # Create a filename based on the current date
-        filename = f"{current_day_str}.xlsx"
+        filename = f"{current_month_str}.xlsx"
 
         # Save the DataFrame to an Excel file
         df.to_excel(filename, index=False)
@@ -44,6 +44,7 @@ def download_data():
 
 # Create a new Tkinter window
 window = tk.Tk()
+window.state('zoomed')
 
 # Create a new button
 button = tk.Button(window, text="Download", command=download_data)
