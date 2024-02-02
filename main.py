@@ -134,18 +134,26 @@ def download_all_data(options, message_label, progress_bar):
 
 
 window = tk.Tk()
+window.title("KNMI Data Converter")
 window.state('zoomed')
+
+
+style = ttk.Style()
+style.theme_use('clam')
+style.configure('TButton', font=('Arial', 10, 'bold'), background='#EEE')
+style.configure('TOptionMenu', font=('Arial', 10, 'bold'), background='#EEE')
+
 options = ["Den Helder/De Kooy", "Leeuwarden", "Groningen/Eelde", "Twenthe", "Schiphol", "De Bilt", "Rotterdam", "Vlissingen", "Eindhoven", "Maastricht/Beek"]
 selected_option = tk.StringVar(window)
 selected_option.set(options[0])
 
-select_box = tk.OptionMenu(window, selected_option, *options)
+select_box = ttk.OptionMenu(window, selected_option, *options)
 select_box.pack()
 
-download_button = tk.Button(window, text="Download Selected Location", command=lambda: download_data(selected_option.get(), message_label))
+download_button = ttk.Button(window, text="Download Selected Location", command=lambda: download_data(selected_option.get(), message_label))
 download_button.pack()
 
-download_all_button = tk.Button(window, text="Download All Locations", command=lambda: download_all_data(options, message_label, progress_bar))
+download_all_button = ttk.Button(window, text="Download All Locations", command=lambda: download_all_data(options, message_label, progress_bar))
 download_all_button.pack()
 
 progress_bar = ttk.Progressbar(window, orient=tk.HORIZONTAL, length=100, mode='determinate')
