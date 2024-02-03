@@ -6,6 +6,7 @@ import pandas as pd
 from datetime import datetime
 import io
 import os
+import sys
 
 def download_data(selected_option, message_label, separate_folder=False):
     urls = {
@@ -132,10 +133,16 @@ def download_all_data(options, message_label, progress_bar):
 
     threading.Thread(target=thread_target).start()
 
+if getattr(sys, 'frozen', False):
+    application_path = sys._MEIPASS
+else:
+    application_path = os.path.dirname(os.path.abspath(__file__))
+
+icon_path = os.path.join(application_path, 'knmi.ico')
 
 window = tk.Tk()
 window.title("KNMI Data Converter")
-window.iconbitmap('knmi.ico')
+window.iconbitmap(icon_path)
 window.state('zoomed')
 
 
