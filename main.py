@@ -135,6 +135,7 @@ def download_all_data(options, message_label, progress_bar):
 
 window = tk.Tk()
 window.title("KNMI Data Converter")
+window.iconbitmap('knmi.ico')
 window.state('zoomed')
 
 

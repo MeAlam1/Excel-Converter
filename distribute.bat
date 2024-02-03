@@ -1,2 +1,2 @@
 @echo off
-pyinstaller --onefile --name FileConverter --icon="logo.ico" --noconsole main.py
+pyinstaller --onefile --name FileConverter --icon="knmi.ico" --noconsole main.py
